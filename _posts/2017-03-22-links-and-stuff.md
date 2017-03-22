@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Links and stuff
-date: 2017-22 11:02-0700
+date: 2017-22 11:02
 ---
 Here are some links where you can find more up-to-date content:
 
