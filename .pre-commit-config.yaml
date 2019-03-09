@@ -1,5 +1,10 @@
 ---
 repos:
+  - repo: https://github.com/ambv/black
+    rev: 18.9b0
+    hooks:
+      - id: black
+        args: ['-l', '132']
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.1.0
     hooks:
@@ -9,41 +14,47 @@ repos:
       - id: check-merge-conflict
       - id: check-xml
       - id: check-yaml
+        args: ['--allow-multiple-documents']
       - id: debug-statements
-      - id: double-quote-string-fixer
       - id: end-of-file-fixer
       - id: fix-encoding-pragma
       - id: flake8
       - id: mixed-line-ending
+        args: ['--fix=lf' ]
       - id: requirements-txt-fixer
       - id: sort-simple-yaml
       - id: trailing-whitespace
-  - repo: https://github.com/detailyang/pre-commit-shell
-    rev: 1.0.4
-    hooks:
-      - id: shell-lint
   - repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.1.6
     hooks:
       - id: remove-tabs
-        exclude: ^Makefile$
+        exclude_types: [makefile, binary]
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.15.0
+    hooks:
+      - id: yamllint
+  - repo: https://github.com/detailyang/pre-commit-shell
+    rev: 1.0.4
+    hooks:
+      - id: shell-lint
   - repo: https://github.com/asottile/reorder_python_imports
-    rev: v1.3.5
+    rev: v1.4.0
     hooks:
       - id: reorder-python-imports
   - repo: local
     hooks:
       - id: remove-unicode-non-breaking-spaces
-        name: Remove unicode non-breaking space character U+00A0 (M-BM-)
+        name: Remove unicode non-breaking space character U+00A0
         language: system
         entry: perl -pi* -e 's/\xc2\xa0/ /g && ($t = 1) && print STDERR $_; END{{exit $t}}'
-        exclude: '.*.(a|png|jpg|jpeg|gif)'
+        exclude_types: [binary]
+      - id: remove-unicode-zero-width-non-breaking-spaces
+        name: Remove unicode zero width non-breaking space character U+FEFF
+        language: system
+        entry: perl -pi* -e 's/\xef\xbb\xbf//g && ($t = 1) && print STDERR $_; END{{exit $t}}'
+        exclude_types: [binary]
       - id: remove-en-dashes
         name: Remove the unicode character U+2013 (en dash)
         language: system
         entry: perl -pi* -e 's/\xe2\x80\x93/-/g && ($t = 1) && print STDERR $_; END{{exit $t}}'
-        exclude: '.*.(a|png|jpg|jpeg|gif)'
-  - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.15.0
-    hooks:
-      - id: yamllint
+        exclude_types: [binary]
