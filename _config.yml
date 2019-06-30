@@ -9,3 +9,5 @@ github_username:  danielhoherd
 
 # Build settings
 markdown: kramdown
+
+theme: jekyll-theme-time-machine
