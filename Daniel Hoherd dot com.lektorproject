@@ -5,4 +5,4 @@ name = Daniel Hoherd dot com
 name = github
 enabled = yes
 default = yes
-target = ghpages://danielhoherd/danielhoherd.github.io
+target = ghpages://danielhoherd/danielhoherd.github.io?cname=danielhoherd.com
