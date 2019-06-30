@@ -6,6 +6,19 @@ help: ## Print Makefile help.
 
 .PHONY: install-hooks
 install-hooks: ## Install git hooks.
-	pip3 install --user --upgrade pre-commit || \
-	pip install --user --upgrade pre-commit
+	pip3 install --user --upgrade pre-commit
 	pre-commit install -f --install-hooks
+
+.PHONY: requirements
+requirements: .requirements ## Install pipenv environment
+.requirements:
+	pipenv install
+	touch .requirements
+
+.PHONY: deploy
+deploy: requirements ## Deploy site to the default target
+	pipenv run lektor deploy ${TARGET}
+
+.PHONY: deploy-github
+deploy-github: TARGET = github
+deploy-github: deploy ## Publish site to github

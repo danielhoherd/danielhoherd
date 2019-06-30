@@ -1,0 +1,15 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="{{ '/static/style.css'|url }}">
+<title>{% block title %}Welcome{% endblock %} — Daniel Hoherd dot com</title>
+<body>
+  <header>
+    <h1>Daniel Hoherd dot com</h1>
+  </header>
+  <div class="page">
+    {% block body %}{% endblock %}
+  </div>
+  <footer>
+    &copy; Copyright 2018 by Daniel Hoherd.
+  </footer>
+</body>

@@ -1,0 +1,8 @@
+[project]
+name = Daniel Hoherd dot com
+
+[servers.github]
+name = github
+enabled = yes
+default = yes
+target = ghpages://danielhoherd/danielhoherd.github.io
