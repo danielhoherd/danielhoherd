@@ -1,23 +1,23 @@
----
-layout: default
----
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="./static/style.css">
+<title>Things I&#39;ve created — Daniel Hoherd dot com</title>
+<body>
+  <header>
+    <h1>Daniel Hoherd dot com</h1>
+  </header>
+  <div class="page">
+    
+  <h2>Things I&#39;ve created</h2>
+  <ul>
+<li><a href="https://danielhoherd.com/tech-notes/">Tech Notes</a> - Notes about technologies I've used.</li>
+<li><a href="http://protanopic.com">Protanopic dot com</a> - Travel blog etc..</li>
+<li><a href="https://flickr.com/photos/warzauwynn">Flickr: WarzauWynn</a> - Photos I've taken</li>
+</ul>
 
-<div class="home">
 
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+  </div>
+  <footer>
+    &copy; Copyright 2018 by Daniel Hoherd.
+  </footer>
+</body>
