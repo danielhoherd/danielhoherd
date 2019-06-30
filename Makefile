@@ -22,3 +22,7 @@ deploy: requirements ## Deploy site to the default target
 .PHONY: deploy-github
 deploy-github: TARGET = github
 deploy-github: deploy ## Publish site to github
+
+.PHONY: serve
+serve: requirements ## Serve lektor locally
+	pipenv run lektor serve
