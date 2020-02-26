@@ -1,12 +1,12 @@
 ---
+exclude: '\.pdf'
 repos:
-  - repo: https://github.com/ambv/black
-    rev: 19.3b0
+  - repo: https://github.com/psf/black
+    rev: 19.10b0
     hooks:
       - id: black
-        args: ['-l', '132']
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.3.0
+    rev: v2.5.0
     hooks:
       - id: check-byte-order-marker
       - id: check-case-conflict
@@ -30,7 +30,7 @@ repos:
       - id: remove-tabs
         exclude_types: [makefile, binary]
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.17.0
+    rev: v1.20.0
     hooks:
       - id: yamllint
   - repo: https://github.com/detailyang/pre-commit-shell
@@ -38,23 +38,14 @@ repos:
     hooks:
       - id: shell-lint
   - repo: https://github.com/asottile/reorder_python_imports
-    rev: v1.6.1
+    rev: v1.9.0
     hooks:
       - id: reorder-python-imports
-  - repo: local
+  - repo: https://github.com/danielhoherd/pre-commit-hooks
+    rev: d0ec497c80183b0e8b19216154c26a956103a416
     hooks:
+      - id: CVE-2017-18342
       - id: remove-unicode-non-breaking-spaces
-        name: Remove unicode non-breaking space character U+00A0
-        language: system
-        entry: perl -pi* -e 's/\xc2\xa0/ /g && ($t = 1) && print STDERR $_; END{{exit $t}}'
-        exclude_types: [binary]
       - id: remove-unicode-zero-width-non-breaking-spaces
-        name: Remove unicode zero width non-breaking space character U+FEFF
-        language: system
-        entry: perl -pi* -e 's/\xef\xbb\xbf//g && ($t = 1) && print STDERR $_; END{{exit $t}}'
-        exclude_types: [binary]
       - id: remove-en-dashes
-        name: Remove the unicode character U+2013 (en dash)
-        language: system
-        entry: perl -pi* -e 's/\xe2\x80\x93/-/g && ($t = 1) && print STDERR $_; END{{exit $t}}'
-        exclude_types: [binary]
+      - id: sort-gitignore
